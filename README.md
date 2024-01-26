@@ -8,12 +8,10 @@ Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
 
 - [Dockerfile](https://spring.io/guides/topicals/spring-boot-docker/)
 
-- [Tests](https://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/html/boot-features-testing.html) (Unit, [WebMvc](https://spring.io/guides/gs/testing-web/), [Json](https://spring.academy/courses/building-a-rest-api-with-spring-boot))
+- [Tests](https://docs.spring.io/spring-boot/docs/3.2.2/reference/html/features.html#features.testing) (Unit, [WebMvc](https://spring.io/guides/gs/testing-web/), [Json](https://spring.academy/courses/building-a-rest-api-with-spring-boot))
 
 - Postgres + PGAdmin using Docker
 
-- Redis (Cache)
-
-- [Kafka/RabbitMQ](https://spring.io/guides/gs/messaging-rabbitmq/)
+- [Redis (Cache)](https://docs.spring.io/spring-framework/reference/integration/cache/annotations.html)
 
 - Docker Compose
