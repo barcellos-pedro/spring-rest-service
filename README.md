@@ -6,7 +6,7 @@ Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
 
 - [x] [Metrics and Tracing](https://spring.io/guides/gs/tanzu-observability/)
 
-- [ ] [Dockerfile](https://spring.io/guides/topicals/spring-boot-docker/)
+- [x] [Dockerfile](https://spring.io/guides/topicals/spring-boot-docker/)
 
 - [ ] [Tests](https://docs.spring.io/spring-boot/docs/3.2.2/reference/html/features.html#features.testing) (Unit, [WebMvc](https://spring.io/guides/gs/testing-web/), [Json](https://spring.academy/courses/building-a-rest-api-with-spring-boot))
 
