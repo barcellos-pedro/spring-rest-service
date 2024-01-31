@@ -4,6 +4,11 @@ Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
 
 ## Roadmap
 
+- Refactor (Project Structure)
+  - [x] Controller
+  - [x] Model
+  - [x] Interface, etc
+
 - [x] [Metrics and Tracing](https://spring.io/guides/gs/tanzu-observability/)
 - [x] [Dockerfile](https://spring.io/guides/topicals/spring-boot-docker/)
 

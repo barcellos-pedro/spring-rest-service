@@ -19,8 +19,8 @@ public class EmployeeModelAssembler implements RepresentationModelAssembler<Empl
 
     @Override
     public EntityModel<Employee> toModel(Employee employee) {
-        var selfLink = linkTo(methodOn(EmployeeController.class).getEmployeeById(employee.getId())).withSelfRel();
-        var rootLink = linkTo(methodOn(EmployeeController.class).getAllEmployees()).withRel("employees");
+        var selfLink = linkTo(methodOn(EmployeeController.class).getById(employee.getId())).withSelfRel();
+        var rootLink = linkTo(methodOn(EmployeeController.class).getAll()).withRel("employees");
         return EntityModel.of(employee, selfLink, rootLink);
     }
 
@@ -30,7 +30,7 @@ public class EmployeeModelAssembler implements RepresentationModelAssembler<Empl
         // couldn't stream to map the employees iterable
         employees.forEach(employee -> entities.add(toModel(employee)));
 
-        var root = linkTo(methodOn(EmployeeController.class).getAllEmployees()).withSelfRel();
+        var root = linkTo(methodOn(EmployeeController.class).getAll()).withSelfRel();
         return CollectionModel.of(entities, root);
     }
 

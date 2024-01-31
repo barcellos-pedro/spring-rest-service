@@ -1,9 +1,7 @@
 package com.pedro.rest.controller;
 
-import com.pedro.rest.assembler.EmployeeModelAssembler;
-import com.pedro.rest.exception.EmployeeNotFoundException;
-import com.pedro.rest.repository.EmployeeRepository;
 import com.pedro.rest.model.Employee;
+import com.pedro.rest.service.EmployeeService;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
@@ -12,47 +10,34 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
-    private final EmployeeRepository repository;
-    private final EmployeeModelAssembler assembler;
+    private final EmployeeService service;
 
-    EmployeeController(EmployeeRepository repository, EmployeeModelAssembler assembler) {
-        this.repository = repository;
-        this.assembler = assembler;
+    EmployeeController(EmployeeService service) {
+        this.service = service;
     }
 
     @GetMapping
-    public CollectionModel<EntityModel<Employee>> getAllEmployees() {
-        return assembler.toCollectionModel(repository.findAll());
+    public CollectionModel<EntityModel<Employee>> getAll() {
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Employee> getEmployeeById(@PathVariable Long id) {
-        var employee = repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
-        return assembler.toModel(employee);
+    public EntityModel<Employee> getById(@PathVariable Long id) {
+return service.getById(id);
     }
 
     @PostMapping
-    public ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
-        EntityModel<Employee> entityModel = assembler.toModel(repository.save(employee));
-        return ResponseEntity.created(assembler.getSelfURI(entityModel)).body(entityModel);
+    public ResponseEntity<?> create(@RequestBody Employee employee) {
+        return service.create(employee);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
-        Employee updatedEmployee = repository.findById(id)
-                .map(employee -> {
-                    employee.setName(newEmployee.getName());
-                    employee.setRole(newEmployee.getRole());
-                    return repository.save(employee);
-                }).orElseGet(() -> repository.save(newEmployee));
-
-        EntityModel<Employee> entityModel = assembler.toModel(updatedEmployee);
-        return ResponseEntity.created(assembler.getSelfURI(entityModel)).body(entityModel);
+    public ResponseEntity<?> update(@RequestBody Employee newEmployee, @PathVariable Long id) {
+        return service.update(newEmployee, id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
-        repository.deleteById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        return service.delete(id);
     }
 }

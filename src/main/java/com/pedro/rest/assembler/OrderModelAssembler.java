@@ -20,8 +20,8 @@ public class OrderModelAssembler implements RepresentationModelAssembler<Order, 
         EntityModel<Order> orderModel = EntityModel.of(order);
 
         // Unconditional links to single-item resource and aggregate root
-        var selfLink = linkTo(methodOn(OrderController.class).getOrderById(order.getId())).withSelfRel();
-        var rootLink = linkTo(methodOn(OrderController.class).getAllOrders()).withRel("orders");
+        var selfLink = linkTo(methodOn(OrderController.class).getById(order.getId())).withSelfRel();
+        var rootLink = linkTo(methodOn(OrderController.class).getAll()).withRel("orders");
         orderModel.add(selfLink, rootLink);
 
         // Conditional links based on state of the order
@@ -40,7 +40,7 @@ public class OrderModelAssembler implements RepresentationModelAssembler<Order, 
         // couldn't stream to map the orders iterable
         orders.forEach(order -> entities.add(toModel(order)));
 
-        var root = linkTo(methodOn(OrderController.class).getAllOrders()).withSelfRel();
+        var root = linkTo(methodOn(OrderController.class).getAll()).withSelfRel();
         return CollectionModel.of(entities, root);
     }
 }
