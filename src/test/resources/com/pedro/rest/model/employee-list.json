@@ -1,0 +1,16 @@
+[
+  {
+    "id": null,
+    "firstName": "Pedro",
+    "lastName": "Reis",
+    "name": "Pedro Reis",
+    "role": "developer"
+  },
+  {
+    "id": null,
+    "firstName": "Ana",
+    "lastName": "Luiza",
+    "name": "Ana Luiza",
+    "role": "developer"
+  }
+]
