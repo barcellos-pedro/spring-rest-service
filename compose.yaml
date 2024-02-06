@@ -1,0 +1,42 @@
+version: '3.8'
+
+volumes:
+  pgdata:
+
+services:
+  app:
+    container_name: app
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    container_name: postgres
+    image: postgres:14.5
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME} -h 127.0.0.1 -p 5432" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:8.2
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_MAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - "5050:80"

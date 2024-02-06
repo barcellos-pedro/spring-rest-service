@@ -16,7 +16,7 @@ Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
 
 ### Todo
 
-*For the sake of simplicity, only the Employee model has tests*
+For the sake of simplicity, only the Employee model has tests
 
 - [Tests](https://docs.spring.io/spring-boot/docs/3.2.2/reference/html/features.html#features.testing)
 
@@ -25,19 +25,18 @@ Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
   - [x] Integration
   - [x] [WebMvc](https://spring.io/guides/gs/testing-web/)
 
-
 - [CI/CD GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven)
 
   - [x] Build
   - [x] Test
-  - [ ] Publish API Docs
+  - [ ] Publish API Docs (Bônus)
 
 ### Bônus 🎁
 
-- [ ] Replace H2 for Postgres
-- [ ] Monitor Postgres with PGAdmin
+- [x] Replace H2 for [Postgres](https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/)
+- [x] [Monitor Postgres with PGAdmin](https://github.com/docker/awesome-compose/tree/master/postgresql-pgadmin)
 - [ ] [Caching (Redis)](https://docs.spring.io/spring-framework/reference/integration/cache/annotations.html)
+- [x] [Docker Compose](https://github.com/docker/awesome-compose/tree/master/spring-postgres)
 - [ ] Nginx
-- [ ] Docker Compose
 - [ ] [Performance Test (Jmeter)](https://jmeter.apache.org/index.html)
 - [ ] [API Docs with Restdocs](https://spring.io/guides/gs/testing-restdocs/)
