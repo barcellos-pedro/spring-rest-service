@@ -4,10 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Employee {
+public class Employee implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -15,7 +16,8 @@ public class Employee {
     private String lastName;
     private String role;
 
-    Employee() {
+    // no-args constructor required by JPA spec
+    protected Employee() {
     }
 
     public Employee(String firstName, String lastName, String role) {
