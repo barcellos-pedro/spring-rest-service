@@ -43,7 +43,7 @@ public class OrderJsonTest {
                   {
                   "id": null,
                   "description": "iphone",
-                  "status": "IN_PROGRESS"
+                  "status": "In Progress"
                   }
                 """;
         assertThat(json.parseObject(jsonValue)).isEqualTo(order1);
@@ -56,12 +56,12 @@ public class OrderJsonTest {
                     {
                       "id": null,
                       "description": "iphone",
-                      "status": "IN_PROGRESS"
+                      "status": "In Progress"
                     },
                     {
                       "id": null,
                       "description": "notebook",
-                      "status": "CANCELLED"
+                      "status": "Cancelled"
                     }
                   ]
                 """;

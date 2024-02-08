@@ -82,7 +82,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private static Problem createProblem(Order order) {
-        var detail = String.format("You can't cancel an order that is in the %s status", order.getStatus());
+        var detail = String.format("You can't cancel an order that is in the [%s] status", order.getStatus().getDisplayName());
 
         return Problem.create()
                 .withTitle("Method not allowed")
