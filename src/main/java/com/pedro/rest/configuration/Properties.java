@@ -2,9 +2,11 @@ package com.pedro.rest.configuration;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(name = "feature.env.logging", havingValue = "true", matchIfMissing = false)
 public class Properties {
 
     @Value("${DB_URL}")
@@ -27,7 +29,7 @@ public class Properties {
 
     @PostConstruct
     public void printProperties() {
-        System.out.println("#### [App Properties] ####");
+        System.out.println("#### [Env Values] ####");
         System.out.println("DB_URL: " + dbUrl);
         System.out.println("DB_USERNAME: " + dbUsername);
         System.out.println("DB_PASSWORD: " + dbPassword);
