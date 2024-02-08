@@ -9,7 +9,7 @@ networks:
 
 services:
   app:
-    container_name: app
+    container_name: backend
     build: .
     ports:
       - "8080:8080"
@@ -23,11 +23,11 @@ services:
       - PGADMIN_MAIL=${PGADMIN_MAIL}
       - PGADMIN_PASSWORD=${PGADMIN_PASSWORD}
     depends_on:
-      postgres:
+      database:
         condition: service_healthy
 
-  postgres:
-    container_name: postgres
+  database:
+    container_name: database
     image: postgres:14.5
     environment:
       - POSTGRES_DB=${DB_NAME}
@@ -41,7 +41,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME} -h 127.0.0.1 -p 5432" ]
+      test: [ "CMD", "pg_isready", "-U", "${DB_USERNAME}", "-d", "${DB_NAME}", "-h", "127.0.0.1", "-p", "5432" ]
       interval: 10s
       timeout: 5s
       retries: 3
