@@ -21,9 +21,14 @@ public class EmployeeController {
         return service.getAll();
     }
 
+    @GetMapping("/role")
+    public CollectionModel<EntityModel<Employee>> getAllByRole(@RequestParam(name = "search", defaultValue = "") String role) {
+        return service.getAllByRole(role);
+    }
+
     @GetMapping("/{id}")
     public EntityModel<Employee> getById(@PathVariable Long id) {
-return service.getById(id);
+        return service.getById(id);
     }
 
     @PostMapping

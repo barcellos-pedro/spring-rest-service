@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 public interface EmployeeService {
     CollectionModel<EntityModel<Employee>> getAll();
 
+    CollectionModel<EntityModel<Employee>> getAllByRole(String role);
+
     EntityModel<Employee> getById(Long id);
 
     ResponseEntity<?> create(Employee employee);

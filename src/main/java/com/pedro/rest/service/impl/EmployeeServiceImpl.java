@@ -28,6 +28,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public CollectionModel<EntityModel<Employee>> getAllByRole(String role) {
+        return assembler.toCollectionModel(repository.findByRoleIgnoreCaseContaining(role));
+    }
+
+    @Override
     public EntityModel<Employee> getById(Long id) {
         var employee = repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
         return assembler.toModel(employee);
