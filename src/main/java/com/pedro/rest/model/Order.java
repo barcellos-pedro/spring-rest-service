@@ -5,18 +5,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "CUSTOMER_ORDER") // ORDER is not a valid name for table
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
     private String description;
     private Status status;
 
-    Order() {
+    protected Order() {
     }
 
     public Order(String description, Status status) {
