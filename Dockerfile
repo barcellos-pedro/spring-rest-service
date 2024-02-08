@@ -4,4 +4,4 @@ WORKDIR /app
 COPY run.sh .
 COPY target/*.jar app.jar
 RUN chmod +x run.sh
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["/app/run.sh"]
