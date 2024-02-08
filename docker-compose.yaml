@@ -3,12 +3,25 @@ version: '3.8'
 volumes:
   pgdata:
 
+networks:
+  rest-network:
+    driver: bridge
+
 services:
   app:
     container_name: app
     build: .
     ports:
       - "8080:8080"
+    networks:
+      - rest-network
+    environment:
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - PGADMIN_MAIL=${PGADMIN_MAIL}
+      - PGADMIN_PASSWORD=${PGADMIN_PASSWORD}
     depends_on:
       postgres:
         condition: service_healthy
@@ -23,6 +36,8 @@ services:
     ports:
       - "5432:5432"
     restart: always
+    networks:
+      - rest-network
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -35,6 +50,8 @@ services:
     container_name: pgadmin
     image: dpage/pgadmin4:8.2
     restart: always
+    networks:
+      - rest-network
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_MAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
