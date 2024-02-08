@@ -2,6 +2,10 @@
 
 Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
 
+## Up & Running
+
+In your terminal run: `docker compose up --build`
+
 ## Roadmap
 
 - Refactor (Project Structure)
