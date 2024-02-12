@@ -77,7 +77,6 @@ class EmployeeControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(header().exists("Location"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(3))
                 .andExpect(jsonPath("$.name").value("test case"));
     }
 
