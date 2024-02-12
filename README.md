@@ -41,6 +41,12 @@ For the sake of simplicity, only the Employee model has tests
 - [x] [Monitor Postgres with PGAdmin](https://github.com/docker/awesome-compose/tree/master/postgresql-pgadmin)
 - [ ] [Caching (Redis)](https://docs.spring.io/spring-framework/reference/integration/cache/annotations.html)
 - [x] [Docker Compose](https://github.com/docker/awesome-compose/tree/master/spring-postgres)
-- [ ] [Nginx](https://github.com/docker/awesome-compose/tree/master)
-- [ ] [Performance Test (Jmeter)](https://jmeter.apache.org/index.html)
+- [x] [Nginx](https://github.com/docker/awesome-compose/tree/master)
+- [x] [Performance Test (Jmeter)](https://jmeter.apache.org/index.html)
 - [ ] [API Docs with Restdocs](https://spring.io/guides/gs/testing-restdocs/)
+
+### Jmeter Tests Formula
+
+Total of requests = `number of threads * loop count`
+
+Requests per second = `number of threads / ramp-up period`
