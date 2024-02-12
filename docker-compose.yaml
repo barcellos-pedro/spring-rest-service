@@ -43,6 +43,7 @@ services:
       - '80:80'
     depends_on:
       - app
+      - app2
 
   database:
     container_name: database
