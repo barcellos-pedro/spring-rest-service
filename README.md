@@ -4,7 +4,7 @@ Project based on [Spring Guide](https://spring.io/guides/tutorials/rest/)
 
 ## Up & Running
 
-In your terminal run: `docker compose up --build`
+In your terminal run: `docker compose up --build -d`
 
 ## Roadmap
 
@@ -33,13 +33,12 @@ For the sake of simplicity, only the Employee model has tests
 
   - [x] Build
   - [x] Test
-  - [ ] Publish API Docs (Bônus)
 
 ### Bônus 🎁
 
 - [x] Replace H2 for [Postgres](https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/)
 - [x] [Monitor Postgres with PGAdmin](https://github.com/docker/awesome-compose/tree/master/postgresql-pgadmin)
-- [ ] [Caching (Redis)](https://docs.spring.io/spring-framework/reference/integration/cache/annotations.html)
+- [x] [Caching (Redis)](https://docs.spring.io/spring-framework/reference/integration/cache/annotations.html)
 - [x] [Docker Compose](https://github.com/docker/awesome-compose/tree/master/spring-postgres)
 - [x] [Nginx](https://github.com/docker/awesome-compose/tree/master)
 - [x] [Performance Test (Jmeter)](https://jmeter.apache.org/index.html)
