@@ -6,6 +6,8 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 
 public interface EmployeeService {
+    String greeting(String name);
+
     CollectionModel<EntityModel<Employee>> getAll();
 
     CollectionModel<EntityModel<Employee>> getAllByRole(String role);

@@ -16,6 +16,11 @@ public class EmployeeController {
         this.service = service;
     }
 
+    @GetMapping("/hello")
+    public ResponseEntity<String> greeting(@RequestParam(name = "name", defaultValue = "") String name) {
+        return ResponseEntity.ok(service.greeting(name));
+    }
+
     @GetMapping
     public CollectionModel<EntityModel<Employee>> getAll() {
         return service.getAll();

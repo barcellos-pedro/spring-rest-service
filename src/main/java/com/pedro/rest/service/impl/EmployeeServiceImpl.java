@@ -5,6 +5,8 @@ import com.pedro.rest.exception.EmployeeNotFoundException;
 import com.pedro.rest.model.Employee;
 import com.pedro.rest.repository.EmployeeRepository;
 import com.pedro.rest.service.EmployeeService;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeServiceImpl(EmployeeRepository repository, EmployeeModelAssembler assembler) {
         this.repository = repository;
         this.assembler = assembler;
+    }
+
+    @Override
+    @Cacheable(value = "employees")
+    public String greeting(String name) {
+        try {
+            Thread.sleep(3500);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        
+        var value = name.isBlank() ? "World!" : name;
+        return String.format("Hello %s", value);
     }
 
     @Override
